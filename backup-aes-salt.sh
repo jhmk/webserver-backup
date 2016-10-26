@@ -15,18 +15,18 @@ sudo zip -r -0 /backup-script/etc-files/etc_`date +%Y-%m-%d`.zip /etc/*
 
 ##########################################
 # Crypto with Password
-# Encrypt: sudo openssl enc -aes-256-cbc -salt -in ###.zip -out ###.zip.aes -pass pass:PASSWORD
-# Decrypt: sudo openssl aes-256-cbc -d -salt -in ###.zip.aes -out ###.zip -pass pass:PASSWORD
+# Encrypt: sudo openssl enc -aes-256-ctr -salt -in ###.zip -out ###.zip.aes -pass pass:PASSWORD
+# Decrypt: sudo openssl aes-256-ctr -d -salt -in ###.zip.aes -out ###.zip -pass pass:PASSWORD
 
 # Crypto with Key
-# Encrypt: sudo openssl enc -aes-256-cbc -salt -in ###.zip -out ###.zip.aes -pass file:KEY
-# Decrypt: sudo openssl aes-256-cbc -d -salt -in ###.zip.aes -out ###.zip -pass file:KEY
+# Encrypt: sudo openssl enc -aes-256-ctr -salt -in ###.zip -out ###.zip.aes -pass file:KEY
+# Decrypt: sudo openssl aes-256-ctr -d -salt -in ###.zip.aes -out ###.zip -pass file:KEY
 ##########################################
 echo "Starting encrypt zip files“
 
-openssl enc -aes-256-cbc -salt -in //backup-script/webserver-files/webserver_`date +%Y-%m-%d`.zip -out /backup-script/webserver-files/webserver_`date +%Y-%m-%d`.zip.aes -pass pass:PASSWORD
+openssl enc -aes-256-ctr -salt -in //backup-script/webserver-files/webserver_`date +%Y-%m-%d`.zip -out /backup-script/webserver-files/webserver_`date +%Y-%m-%d`.zip.aes -pass pass:PASSWORD
 
-openssl enc -aes-256-cbc -salt -in /backup-script/etc-files/etc_`date +%Y-%m-%d`.zip -out /backup-script/etc-files/etc_`date +%Y-%m-%d`.zip.aes -pass pass:PASSWORD
+openssl enc -aes-256-ctr -salt -in /backup-script/etc-files/etc_`date +%Y-%m-%d`.zip -out /backup-script/etc-files/etc_`date +%Y-%m-%d`.zip.aes -pass pass:PASSWORD
 
 ##########################################
 # Remove ZIP Files
